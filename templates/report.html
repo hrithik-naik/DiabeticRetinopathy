@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+        
+
+    
+        .bebas-neue-regular {
+            font-family: "Bebas Neue", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            }
+
+
+
+        
+        title{
+            align-items: center;
+            
+        }
+        body {
+            font-family:   sans-serif;
+            margin: 20px;
+            background-color: black;
+            color: #f0f0f0;
+            width: 100%; /* Set form width to 80% of the page width */
+            max-width: 1100px; /* Maximum width for the form */
+            margin: 0 auto; /* Center the form horizontally */
+        
+            border: 2px solid transparent; /* Transparent border */
+            padding: 20px; /* Padding inside the form */
+            box-shadow: 0 0 20px 5px rgba(67, 247, 226, 0.7); /* Soft feathered shadow effect */
+            border-radius: 10px; /* Optional rounded corners */
+        }
+        h2 {
+            text-align: center;
+        }
+        .report-section {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        .inline {
+            display: inline-block;
+            width: 45%;
+            margin-right: 5%;
+        }
+        .full-width {
+            width: 100%;
+        }
+        .paragraph-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        p{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <h2 class="bebas-neue-regular" style="font-size: 3em;">Report</h2>
+
+    <!-- First Line: Name -->
+    <div style="font-size:3em;" class="report-section">
+        <span class="bebas-neue-regular" >{{ data.name }}</span>
+    </div>
+
+    <!-- Second Line: Age, Sex, BP, and Blood Group -->
+    <div class="bebas-neue-regular" style="font-size: 1.5em">
+        <div class="inline">
+            <label id="Age">{{ data.age }}/{{data.number}}</label>
+            <label id="Gender">{{data.sex}}</label> </br>
+            <label id="BloodPressure">BP:{{data.BP}}</label> 
+            <label id="BloodGroup">Blood Group:{{data.BD}}</label>
+        </div>
+    </div>
+
+    <h2 class="bebas-neue-regular" style="font-size: 3em;">Predictions</h2>
+    
+
+    <p>
+        <span class="label">Diabetes Retinopathy Status:</span>
+        <span class="bebas-neue-regular" style="font-size: 1.5em">{{data.tier}}</span>
+    </p>
+    <p>
+        <span class="label">Lesion Size: </span>
+        <span class="bebas-neue-regular" style="font-size: 1.5em">{{data.ratio}}</span>
+    </p>
+    <p>
+        <span class="label">Nerve Blocking/ Bleeding:</span>
+        <span class="bebas-neue-regular" style="font-size: 1.5em">{{data.nerve}}</span>
+    </p>
+   
+    
+      
+    <h2 class="bebas-neue-regular" style="font-size: 3em;">GENERATIVE ANALYSIS</h2>
+
+    <!-- Paragraph Box for Additional Factors -->
+    <div class="paragraph-box">
+        <p><strong>Analysis</strong> {{data.analysis}}</p>
+        <p><strong>Precautions</strong>{{data.precaution}} </p>
+        <p><strong>tests</strong> {{data.tests}}</p>
+        <p><strong>conclusion</strong> {{data.conclusion}}</p>
+
+
+
+    </div>
+    
+</body>
+</html>

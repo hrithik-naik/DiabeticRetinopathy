@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title >Doctor's Report Maker for DR</title>
+    <link rel="stylesheet" href="https://pngtree.com/freepng/file-upload-icon_4646955.html">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: black;
+            color: #f0f0f0;
+        }
+        title{
+            align-items: center;
+            
+        }
+        form {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"],
+        input[type="radio"],
+        textarea {
+            padding: 8px;
+            margin: 6px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .inline {
+            display: inline-block;
+            margin-right: 15px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #51f0c5;
+            color: white;
+            border: none;   
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3fb898;
+        }
+        .radio-group {
+            margin-bottom: 20px;
+        }
+        .radio-label {
+            margin-right: 15px;
+        }
+        #image {
+            display: none; /* Hide the default file input */
+            
+        }
+
+        .image_box {
+            display: inline-block;
+            width: 150px; /* Adjust width as needed */
+            height: auto; /* Adjust height as needed */
+            box-shadow: 0 0 20px 5px rgba(67, 247, 226, 0.3); /* Optional: add a border for better visibility */
+            border-radius: 8px; /* Optional: add rounded corners */
+            cursor: pointer; /* Change cursor to pointer */
+            padding: 10px  ; /* Padding around the icon */
+            text-align: center; /* Center the icon */
+            position: relative; /* Position relative to enable absolute positioning of input */
+        }
+
+        .icon {
+            width: 25px; /* Change to desired icon width */
+            height: 25px; /* Change to desired icon height */
+        }
+
+        /* Hide the file input */
+        input[type="file"] {
+            display: none; /* Hide the file input */
+        }
+
+        /* Show label on hover (optional) */
+        .image_box:hover {
+            background-color: #f0f0f0; /* Change background on hover for visual feedback */
+            box-shadow: 0 0 20px 5px rgba(67, 247, 226, 1); /* Soft feathered shadow effect */
+        }
+
+                /* Change color when checked */
+        .radio-group input[type="radio"]:checked {
+            accent-color: #43f7e2; /* Change the color of the radio button when checked */
+        }
+
+        form {
+        width: 100%; /* Set form width to 80% of the page width */
+        max-width: 1100px; /* Maximum width for the form */
+        margin: 0 auto; /* Center the form horizontally */
+        
+        border: 2px solid transparent; /* Transparent border */
+        padding: 20px; /* Padding inside the form */
+        box-shadow: 0 0 20px 5px rgba(67, 247, 226, 0.7); /* Soft feathered shadow effect */
+        border-radius: 10px; /* Optional rounded corners */
+
+
+    }
+    .logo-container {
+            display: flex; /* Use flexbox for alignment */
+            align-items: center; /* Center items vertically */
+            margin-bottom: 20px;
+        }
+        .logo-container img {
+            width: 100px; /* Size of the logo */
+            height: 100px; /* Height of the logo */
+            border-radius: 50%; /* Make the logo circular */
+            margin-right: 10px; /* Space between logo and text */
+            object-fit: cover; /* Maintain aspect ratio */
+        }
+        .logo-container p {
+            margin: 0; /* Remove default margin */
+            font-size: 24px; /* Font size for the text */
+            font-weight: bold; /* Make text bold */
+        }
+        
+
+
+
+        
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="static/broyos.jpg" alt="Logo">
+        <p>BroYOS</p>
+    </div>
+
+    
+    <form action="/submit-report" method="post" enctype="multipart/form-data">
+        <div style="display: inline-block; margin-right: 20px; text-align: center;">
+            <div style="padding-bottom: 7px;">Upload Left Eye Image</div>
+            <label for="left_eye_image" class="image_box">
+                <img src="https://cdn-icons-png.flaticon.com/128/3097/3097412.png" alt="Upload Icon" class="icon">
+            </label>
+            <input type="file" id="left_eye_image" name="left_eye_image" accept="image/*" required>
+            <span id="left_eye_filename" style="display:block; color: #f0f0f0;"></span>
+        </div>
+        
+        <div style="display: inline-block; text-align: center;">
+            <div style="padding-bottom: 7px;">Upload Right Eye Image</div>
+            <label for="right_eye_image" class="image_box">
+                <img src="https://cdn-icons-png.flaticon.com/128/3097/3097412.png" alt="Upload Icon" class="icon">
+            </label>
+            <input type="file" id="right_eye_image" name="right_eye_image" accept="image/*" required>
+            <span id="right_eye_filename" style="display: block; color: #f0f0f0;"></span>
+        </div>
+        
+        
+        
+        </br>
+        </br>
+        <!-- First Line: Name -->
+
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Your name.." required>
+
+        <!-- Second Line: Age, Sex, Blood Pressure, and Blood Group -->
+        <div>
+            <div class="inline">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" placeholder="Age" required>
+            </div>
+
+            <div class="inline">
+                <label for="sex">Sex:</label>
+                <select id="sex" name="sex" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="inline">
+                <label for="blood_pressure">Blood Pressure:</label>
+                <input type="text" id="blood_pressure" name="blood_pressure" placeholder="BP" required>
+            </div>
+
+            <div class="inline">
+                <label for="blood_group">Blood Group:</label>
+                <input type="text" id="blood_group" name="blood_group" placeholder="Blood Group" required>
+            </div>
+        </div>
+
+        <!-- Yes/No Questions -->
+        <div class="radio-group">
+            <label>Are you currently on any medication or insulin for diabetes?</label>
+            <label class="radio-label"><input type="radio" name="medication" value="yes" required> Yes</label>
+            <label class="radio-label"><input type="radio" name="medication" value="no" required> No</label>
+        </div>
+
+        <div class="radio-group">
+            <label>Have you noticed any changes in your vision, such as blurriness, difficulty seeing at night, or fluctuations in vision?</label>
+            <label class="radio-label"><input type="radio" name="vision_changes" value="yes" required> Yes</label>
+            <label class="radio-label"><input type="radio" name="vision_changes" value="no" required> No</label>
+        </div>
+
+        <div class="radio-group">
+            <label>Have you seen any floaters, spots, or flashes of light in your vision?</label>
+            <label class="radio-label"><input type="radio" name="floaters" value="yes" required> Yes</label>
+            <label class="radio-label"><input type="radio" name="floaters" value="no" required> No</label>
+        </div>
+
+        <div class="radio-group">
+            <label>Are you experiencing any pain, discomfort, or pressure in your eyes?</label>
+            <label class="radio-label"><input type="radio" name="eye_pain" value="yes" required> Yes</label>
+            <label class="radio-label"><input type="radio" name="eye_pain" value="no" required> No</label>
+        </div>
+
+        <div class="radio-group">
+            <label>Is there a family history of diabetes or diabetic retinopathy?</label>
+            <label class="radio-label"><input type="radio" name="family_diabetes" value="yes" required> Yes</label>
+            <label class="radio-label"><input type="radio" name="family_diabetes" value="no" required> No</label>
+        </div>
+
+        <div class="radio-group">
+            <label>Have any family members had significant vision problems?</label>
+            <label class="radio-label"><input type="radio" name="family_vision_problems" value="yes" required> Yes</label>
+            <label class="radio-label"><input type="radio" name="family_vision_problems" value="no" required> No</label>
+        </div>
+        <label for="message">Additional Comments</label>
+        <textarea id="message" name="message" placeholder="Add other important information" style="height:100px; width:550px;"></textarea>
+        
+
+        <!-- Submit Button -->
+        <button class="button" type="submit">Submit</button>
+    </form>
+    <script>
+        document.getElementById('left_eye_image').addEventListener('change', function() {
+            var fileName = this.files[0].name;
+            document.getElementById('left_eye_filename').textContent = fileName;
+        });
+    
+        document.getElementById('right_eye_image').addEventListener('change', function() {
+            var fileName = this.files[0].name;
+            document.getElementById('right_eye_filename').textContent = fileName;
+        });
+    </script>
+
+</body>
+</html>
